@@ -1,30 +1,29 @@
 /*global $:true,jQuery:true*/
 /*jslint debug: true, devel: true, evil: true, vars: true, sloppy: true, undef: true */
 (function ($) {
-		
+
 	var methods = {
 		init : function (options) {
 		
 			// public / defaults
 			var settings = $.extend({
-				"tableClass" : "responsive",
-				"minWidth" : 780
+				'tableClass' : 'responsive',
+				'minWidth' : 767
 			}, options);
 			
-			return this.each(function () {
-				
+			return this.each(function (i) {
+
 				var $this = $(this),
 					data = $this.data('rejoinder');
 				
 				if (!data) {
-					$this.data('rejoinder', {
-						target : $this,
-						split : false
-					});
+					$this.data('rejoinder', settings);
 				}
                 
-                addHeaderTable($this);
-			
+                updateHeaderTable($this);
+                
+                $(window).on('resize', { elem: $this }, function (e) { updateHeaderTable(e.data.elem); });
+                
 			});
 		},
 		destroy : function () {
@@ -35,63 +34,54 @@
 					data = $this.data('rejoinder');
 				
 				data.rejoinder.remove();
-			
+                
+                rmHeaderTable($this);
 			});
 			
-		},
-		splitTable : function () {
-		
 		}
 	};
     
     // private functions
-    var addHeaderTable = function (elem) {
+    var updateHeaderTable = function (elem) {
         var data = elem.data('rejoinder'),
-            tblTop = elem.offset().top,
-            tblLeft = elem.offset().left,
-            tblWidth = elem.outerWidth(),
             tblColWidth = elem.find('th :first').outerWidth();
+        
+        if ($(window).width() < data.minWidth && !elem.data('split')) {
+            var wrapper = elem.clone();
+            elem.wrap("<div class='table-wrapper' />");
+            wrapper.removeClass("responsive");
+            elem.closest(".table-wrapper").append(wrapper);
+            wrapper.wrap("<div class='pinned' />");
+            elem.wrap("<div class='scrollable' />");
+            
+            wrapper.find("td:not(.firstCol), th:not(.firstCol)").css('display', 'none');
+            resizeTableRowHeight(elem);
+            
+            elem.data('split', true);
+            
+        } else if ($(window).width() < data.minWidth && elem.data('split')) {
+            resizeTableRowHeight(elem);
 
-        console.log(tblColWidth);
-        
-        var $wrapperDiv = $(document.createElement("div"));
-        $wrapperDiv.css({
-            'position' : 'absolute',
-            'top' : tblTop,
-            'left' : tblLeft,
-            'width' : tblColWidth,
-            'overflow' : 'hidden'
+        } else if (elem.data('split') && $(window).width() >= data.minWidth) {
+            
+            elem.closest(".table-wrapper").find(".pinned").remove();
+            elem.unwrap();
+            elem.unwrap();
+            
+            elem.data('split', false);
+        }
+    };
+    
+    var resizeTableRowHeight = function (elem) { 
+        originalTableRows = elem.find("tr");
+        elem.closest('.table-wrapper').find('.pinned table tr').each(function (i, e) {
+            $(e).css('height', $(originalTableRows[i]).css('height'));
         });
-        elem.before($wrapperDiv);
-        elem.wrap("<div class='mainResp' />");
-        
-        elem.clone().addClass("resp_hdr").width(tblWidth).appendTo($wrapperDiv);
-        
-        console.log($wrapperDiv);
-        /*
-        var tableClassStr = '.' + settings.tableClass;
-        var $table = $(tableClassStr);
-        
-        var top = $table.offset().top;
-        var left =  $table.offset().left;
-        var width = $table.outerWidth();
-        
-        $table.before('<div id="respHeader" />');
-        $table.wrap("<div class='mainResp' />");
-        
-        $table.clone().addClass("resp_hdr").width(width).appendTo("#respHeader");
-        $("#respHeader").css({
-            'position': 'absolute',
-            'top': top,
-            'left': left,
-            'width': '85px',
-            'overflow':'hidden'
-        });
-        */
     };
 
 	$.fn.rejoinder = function (method) {
-		
+		var $this = $(this);
+        
 		if (methods[method]) {
 			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
 		} else if (typeof method === 'object' || !method) {
@@ -99,57 +89,7 @@
 		} else {
 			$.error('Method ' + method + ' does not exist on jQuery.rejoinder');
 		}
-		
-		
-		/*
-		
-		$(window).on("resize", function (e){
-			if ($(e.target).width() <= settings.minWidth && !settings.split) {
-				splitTable();
-			} else if ($(e.target).width() > settings.minWidth && settings.split) {
-				cleanupTable();
-			} else if (settings.split) {
-				resizeTable();
-			}
-		});
-		
-		function resizeTable() {
-			console.log("resize table");
-		}
-		
-		function splitTable() {
-			settings.split = true;
-			console.log("split table");
-			
-			var tableClassStr = '.' + settings.tableClass;
-			var $table = $(tableClassStr);
-			
-			var top = $table.offset().top;
-			var left =  $table.offset().left;
-			var width = $table.outerWidth();
-			
-			$table.before('<div id="respHeader" />');
-			$table.wrap("<div class='mainResp' />");
-			
-			$table.clone().addClass("resp_hdr").width(width).appendTo("#respHeader");
-			$("#respHeader").css({
-				'position': 'absolute',
-				'top': top,
-				'left': left,
-				'width': '85px',
-				'overflow':'hidden'
-			})
-		}
-		
-		function cleanupTable() {
-			settings.split = false;
-			console.log("cleanup table");
-			
-			var tableClassStr = '.' + settings.tableClass;
-			var $table = $(tableClassStr);
-		}	
-		*/
-			
+        
 		return this;
 	};
 }(jQuery));
