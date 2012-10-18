@@ -1,0 +1,31 @@
+/* calendar styles */
+table.calendar {
+    width: 1450px;   
+}
+table.calendar tr {
+    height: 50px;   
+}
+
+table.responsive {background:#fff;margin: 0 0 1.5em 0;border: 1px solid #DDD;border-bottom: none;border-spacing:2px;width:100%;line-height:1.4em;}
+table.responsive tr th {padding: .5em .6em;color: #4F6B72;border-right: 1px solid #C1DAD7;border-bottom: 1px solid #C1DAD7;border-top: 1px solid #C1DAD7;text-transform: uppercase;text-align: left;background: #CADEEA;vertical-align: text-top;}
+table.responsive tr td {background-color: #fff;border-right: 1px solid #C1DAD7;border-bottom: 1px solid #C1DAD7;padding: .7em .8em;color: #4F6B72;vertical-align: text-top;}
+table.responsive tr th:first-child {border-left: 1px solid #C1DAD7;border-top: 0;background: #F5FAFA url(http://hopkinsmedicine.org/sebin/c/y/table-bullet.gif) no-repeat 1px 1px;color: #797268;}
+table.responsive tr td.empty {background:#ffffff !important;}
+table.responsive .yellow {background:#FEFFD8;}
+table.responsive .white {background:#fff;}
+table.responsive .blue {background:#CADEEA;}	
+
+/* responsive table styles */
+@media only screen and (max-width: 767px) {
+    
+    table.responsive { margin-bottom: 0; }
+	
+	.pinned { position: absolute; left: 0; top: 0; background: #FFF; width: 25%; overflow: hidden; }
+	.pinned table { border-right: none; border-left: none; width:100%; }
+	
+	div.table-wrapper { position: relative; overflow: hidden; background-color: #E8F5FF; }
+    div.table-wrapper div.rejoinder-scrollable table { margin-left: 25%; }
+	div.table-wrapper div.rejoinder-scrollable { overflow: scroll; overflow-y: hidden; }	
+    div.rejoinder-scrollable td.firstCol, div.rejoinder-scrollable th.firstCol { display: none; }	
+
+}

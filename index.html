@@ -8,234 +8,63 @@
         <link rel="stylesheet" href="css/style.css" />
 
 		<script src="lib/jquery-1.8.2.js"></script>
+        <script src="lib/modernizr.media-query-only.js"></script>
 		<script src="js/jquery.rejoinder.js"></script>
 		
 <script type="text/javascript">
 /*global $:true*/
 /*jslint debug: true, devel: true, evil: true, vars: true, sloppy: true */
 $(document).ready(function () {
-	$(".responsive").rejoinder();
+    // do we supprt media queries?
+    if (Modernizr.mq('only all')) {
+	   $(".responsive").rejoinder();
+    }
 });
 </script>
 	</head>
 	<body>
-<h1>GTS Table</h1>
-<table cellspacing="0" class="responsive calendar" summary="Time Commitment and Course Length">
-  <tbody>
-    <tr>
-        <th abbr="Hrs" scope="col" class="firstCol">Time</th>
-        <th abbr="Day 1" scope="col">Monday</th>
-        <th abbr="Day 2" scope="col" colspan="2">Tuesday</th>
-        <th abbr="Day 3" scope="col" colspan="2">Wednesday</th>
-        <th abbr="Day 3" scope="col" colspan="2">Thursday</th>
-        <th abbr="Day 3" scope="col" colspan="2">Friday</th>
-    </tr>
-    <tr>
-        <td abbr="8:00 AM" scope="row" rowspan="4" class="firstCol"><p>8 AM</p></td>
-        <td rowspan="4"><strong>Scientific Foundations of Medicine:</strong> Anatomy Intro</td>
-        <td colspan="2" rowspan="4"><strong>Scientific Foundations of Medicine:</strong>Thorax+chalktalk<br>Thorax Lecture</td>
-        <td colspan="2" rowspan="4"><strong>Scientific Foundations of Medicine:</strong> <br>Heart</td>
-        <td colspan="2" rowspan="4"><strong>Scientific Foundations of Medicine:</strong><br>Pulmonary Clinic Correl</td>
-        <td colspan="2" rowspan="4"><strong>Scientific Foundations of Medicine:</strong><br>Heart Develop</td>
-    </tr>
-    <tr>
-        <!-- 8:15 -->
-    </tr>
-    <tr>
-       <!-- 8:30 -->
-    </tr>
-    <tr>
-       <!-- 8:45 -->
-    </tr>
-    <tr>
-        <td abbr="9-10 AM" scope="row" rowspan="4" class="firstCol"><p>9 am</p></td>
-        <td rowspan="4"><strong>Scientific Foundations of Medicine:</strong><br>Lab. Safety Intro</td>
-        <td class="alt" colspan="2">&nbsp;</td>
-        <td class="alt" colspan="2">&nbsp;</td>
-        <td class="alt" colspan="2">&nbsp;</td>
-        <td rowspan="8"><strong>Scientific Foundations of Medicine:</strong><br>Thorax</td>
-        <td rowspan="8"><strong>Scientific Foundations of Medicine:</strong><br>Chest lab</td>
-    </tr>
-    <tr>
-        <td colspan="2"><strong>Scientific Foundations of Medicine:</strong><br> First Day </td>
-        <td rowspan="4" colspan="2"><strong>Scientific Foundations of Medicine:</strong> <br>Periph. Nerves</td>
-        <td rowspan="8"><strong>Scientific Foundations of Medicine:</strong> <br> Heart Lab</td>
-        <td rowspan="8"><strong>Scientific Foundations of Medicine:</strong> <br> Pulmonary</td>
-    </tr>
-    <tr>
-        <td class="alt" colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-        <td rowspan="7"><span class="alt"><strong>Scientific Foundations of Medicine:</strong><br>Thorax Imaging</span></td>
-        <td rowspan="7"><strong>Scientific Foundations of Medicine:</strong><br>Thorax Lab</td>
-    </tr>
-    <tr>
-        <td abbr="12-1 PM" scope="row"rowspan="4" class="firstCol"><p>10 AM</p></td>
-        <td rowspan="3">&nbsp;</td>
-    </tr>
-    <tr>
-        <td colspan="2">&nbsp;</td>
-    </tr>
-    <tr>
-        <td rowspan="5"><span class="alt"><strong>Scientific Foundations of Medicine:</strong> <br>Inro to Team Based Learning</span></td>
-        <td rowspan="5"><span class="alt"><strong>Scientific Foundations of Medicine:</strong> <br> Lung Lab</span></td>
-    </tr>
-    <tr>
-        <td rowspan="5"><span class="alt"><strong>Scientific Foundations of Medicine:</strong><br> Embryology Intro </span></td>
-    </tr>
-    <tr>
-        <td abbr="1-3 PM" scope="row" rowspan="4" class="firstCol"><p>11 AM</p></td>
-        <td rowspan="8"><strong>Scientific Foundations of Medicine:</strong><br>Chest Lab</td>    
-        <td rowspan="8"><strong>Scientific Foundations of Medicine:</strong><br> Thorax</td> 
-    </tr>
-    <tr>
-        <td rowspan="7"><span class="alt"><strong>Scientific Foundations of Medicine:</strong> <br> Heart Lab</span></td>
-        <td rowspan="7"><span class="alt"><strong>Scientific Foundations of Medicine:</strong> <br> Heart Lab</span></td>
-    </tr>
-    <tr>
-        <td rowspan="6"><span class="alt"><strong>Scientific Foundations of Medicine:</strong><br> Medical Imaging</span></td>
-        <td rowspan="6"><span class="alt"><strong>Scientific Foundations of Medicine:</strong><br> Thorax Lab</span></td>
-    </tr>
-    <tr>
-        <td rowspan="5"><span class="alt"><strong>Scientific Foundations of Medicine:</strong> <br> Inro to Team Based Learning</span></td>
-        <td rowspan="5"><span class="alt"><strong>Scientific Foundations of Medicine:</strong> <br> Lung Lab</span></td>
-    </tr>
-    <tr>
-        <td abbr="3-4 PM" scope="row" rowspan="4" class="firstCol"><p>12 PM</p></td>
-        <td rowspan="4"><span class="alt"><strong>Scientific Foundations of Medicine:</strong><br>Medical Imaging</span></td>
-    </tr>
-    <tr>
-        <!-- 12:15 -->
-    </tr>
-    <tr>
-        <!-- 12:30 -->
-    </tr>
-    <tr>
-        <!-- 12:45 -->
-    </tr>
-    <tr>
-        <td rowspan="4" abbr="4-5 PM" scope="row" class="firstCol"><p>1 PM</p></td>
-        <td rowspan="4" class="alt">&nbsp;</td>
-        <td rowspan="4" class="alt" colspan="2">&nbsp;</td>
-        <td rowspan="4" class="alt" colspan="2">&nbsp;</td>
-        <td rowspan="4" class="alt" colspan="2">&nbsp;</td>
-        <td rowspan="4" colspan="2"><strong>Scientific Foundations of Medicine:</strong><br> Lab Presentation</td>
-    </tr>
-    <tr>
-        <!-- 1:15 -->
-    </tr>
-    <tr>
-        <!-- 1:30 -->
-    </tr>
-    <tr>
-        <!-- 1:45 -->
-    </tr>
-    </tbody>
-</table>
-        
-		<h1>Responsive Table</h1>
-		<table class="responsive" cellpadding="0" cellspacing="0">
-			<thead>
-				<tr>
-					<th class="firstCol">Header 1</th>
-					<th>Header 2</th>
-					<th>Header 3</th>
-					<th>Header 4</th>
-					<th>Header 5</th>
-					<th>Header 6</th>
-					<th>Header 7</th>
-					<th>Header 8</th>
-					<th>Header 9</th>
-					<th>Header 10</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="firstCol">Row 1 Col 1</td>
-					<td>Row 1 Col 2</td>
-					<td>Row 1 Col 3</td>
-					<td>Row 1 Col 4</td>
-					<td>Row 1 Col 5</td>
-					<td>Row 1 Col 6</td>
-					<td>Row 1 Col 7</td>
-					<td>Row 1 Col 8</td>
-					<td>Row 1 Col 9</td>
-					<td>Row 1 Col 10</td>
-				</tr>
-				<tr class="even">
-					<td class="firstCol">Row 2 Col 1</td>
-					<td>Row 2 Col 2</td>
-					<td>Row 2 Col 3</td>
-					<td>Row 2 Col 4</td>
-					<td>Row 2 Col 5</td>
-					<td>Row 2 Col 6</td>
-					<td>Row 2 Col 7</td>
-					<td>Row 2 Col 8</td>
-					<td>Row 2 Col 9</td>
-					<td>Row 2 Col 10</td>
-				</tr>
-				<tr>
-					<td class="firstCol">Row 3 Col 1</td>
-					<td>Row 3 Col 2</td>
-					<td>Row 3 Col 3</td>
-					<td>Row 3 Col 4Row 3 Col 4Row 3 Col 4Row 3 Col 4Row 3 Col 4Row 3 Col 4Row 3 Col 4</td>
-					<td>Row 3 Col 5</td>
-					<td>Row 3 Col 6</td>
-					<td>Row 3 Col 7</td>
-					<td>Row 3 Col 8</td>
-					<td>Row 3 Col 9</td>
-					<td>Row 3 Col 10</td>
-				</tr>
-				<tr class="even">
-					<td class="firstCol">Row 4 Col 1</td>
-					<td>Row 4 Col 2</td>
-					<td>Row 4 Col 3</td>
-					<td>Row 4 Col 4</td>
-					<td>Row 4 Col 5</td>
-					<td>Row 4 Col 6</td>
-					<td>Row 4 Col 7</td>
-					<td>Row 4 Col 8</td>
-					<td>Row 4 Col 9</td>
-					<td>Row 4 Col 10</td>
-				</tr>
-				<tr>
-					<td class="firstCol">Row 5 Col 1</td>
-					<td>Row 5 Col 2</td>
-					<td>Row 5 Col 3</td>
-					<td>Row 5 Col 4</td>
-					<td>Row 5 Col 5Row 5 Col 5Row 5 Col 5</td>
-					<td>Row 5 Col 6</td>
-					<td>Row 5 Col 7</td>
-					<td>Row 5 Col 8</td>
-					<td>Row 5 Col 9</td>
-					<td>Row 5 Col 10</td>
-				</tr>
-				<tr class="even">
-					<td class="firstCol">Row 6 Col 1</td>
-					<td>Row 6 Col 2</td>
-					<td>Row 6 Col 3</td>
-					<td>Row 6 Col 4</td>
-					<td>Row 6 Col 5</td>
-					<td>Row 6 Col 6</td>
-					<td>Row 6 Col 7</td>
-					<td>Row 6 Col 8</td>
-					<td>Row 6 Col 9</td>
-					<td>Row 6 Col 10</td>
-				</tr>
-				<tr>
-					<td class="firstCol">Row 7 Col 1</td>
-					<td>Row 7 Col 2</td>
-					<td>Row 7 Col 3</td>
-					<td>Row 7 Col 4</td>
-					<td>Row 7 Col 5</td>
-					<td>Row 7 Col 6</td>
-					<td>Row 7 Col 7</td>
-					<td>Row 7 Col 8</td>
-					<td>Row 7 Col 9</td>
-					<td>Row 7 Col 10</td>
-				</tr>
-			</tbody>
-		</table>
 
+        <table class="responsive">
+  <tr>
+    <th class="firstCol" width="94">TIME</th>
+    <th width="177">DAY    1</th>
+    <th width="189">DAY    2</th>
+    <th width="180">DAY    3</th>
+    <th width="186">DAY    4</th>
+  </tr>
+  <tr>
+    <th class="firstCol">8:30    AM</th>
+    <td rowspan="3">Course Overview: <br />
+      The Obesity Epidemic; Behavioral, Pharmacologic, and Surgical Management <br />
+      of Obesity; <br />
+      Obesity and Quality of Life; <br />
+      Panel Discussion </p></td>
+    <td rowspan="2">Mini-Lectures and Panels: <br />
+      Health Promotion and Disease Prevention;<br />
+      Strategies to Control the Obesity Epidemic;<br />
+      Ethics, Economics and Health Policy </p></td>
+    <td rowspan="2">Ethics and Professionalism in    Clinical Care;<br />
+      Physician's Role in Facilitating Lifestyle Change;<br />
+      Fundamentals of Taking a Nutritional History;<br />
+      Introduction to Motivational Counseling </p></td>
+    <td>Feedback from Personal Dietary    Assessments</p></td>
+  </tr>
+  <tr>
+    <th class="firstCol">9:00    AM</th>
+    <td>Small Group: Student Reflection on Personal Lifestyle Change </p></td>
+  </tr>
+  <tr>
+    <th class="firstCol">10:00AM</th>
+    <td rowspan="2">Journal Club: Comparison of Popular Weight Control Diets</p></td>
+    <td rowspan="2">Clinical Skills Practice with    College Faculty</td>
+    <td rowspan="2">College Advising</td>
+  </tr>
+  <tr>
+    <th class="firstCol">11:00    AM</th>
+    <td>Small Group: Cultural Competence Case Discussion </p></td>
+  </tr>
+</table>
+
+        
 	</body>
 </html>
